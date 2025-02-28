@@ -1,0 +1,30 @@
+
+
+.mat-grid-tile {
+  background-color: lightblue;
+  color: green;
+  cursor: pointer;
+}
+
+.large-font {
+  font-size: 20px; /* Ou qualquer tamanho que você preferir */
+}
+
+.imagem {
+  width: 100%;
+  height: auto;
+}
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  transition: font-size 0.5s;
+  text-align: center; /* Garantir centralização do texto */
+}
+.texto:hover {
+  font-size: 36px;
+}
+
