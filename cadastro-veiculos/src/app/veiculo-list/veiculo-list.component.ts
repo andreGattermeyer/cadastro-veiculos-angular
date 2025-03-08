@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VeiculoService } from '../veiculo.service';
 import { Veiculo } from '../veiculo.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-veiculo-list',
@@ -31,6 +32,9 @@ export class VeiculoListComponent implements OnInit {
     'apagarVeiculo',
   ];
 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
   constructor(private veiculoService: VeiculoService, private router: Router) {}
 
   ngOnInit(): void {
@@ -53,10 +57,13 @@ export class VeiculoListComponent implements OnInit {
         normalize(data.tipoVeiculo).includes(lowerCaseFilter)
       );
     };
+
+    this.dataSource.paginator = this.paginator;
   }
 
   acharVeiculos(veiculos: Veiculo[]): void {
     this.dataSource.data = veiculos;
+    this.dataSource.paginator = this.paginator;
   }
 
   cancelarBusca(): void {
@@ -67,6 +74,7 @@ export class VeiculoListComponent implements OnInit {
     this.veiculoService.buscarTodosVeiculos().subscribe({
       next: (res: Veiculo[]) => {
         this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
       },
       error: (err: HttpErrorResponse) => {
         console.error(err);

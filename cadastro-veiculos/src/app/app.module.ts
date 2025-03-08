@@ -24,8 +24,11 @@ import { VeiculoListComponent } from './veiculo-list/veiculo-list.component';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { CustomMatPaginatorIntl } from './MatPaginatorIntl';
 
 import { BuscarVeiculoComponent } from './buscar-veiculo/buscar-veiculo.component';
+import { RotaVeiculoComponent } from './rota-veiculo/rota-veiculo.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { BuscarVeiculoComponent } from './buscar-veiculo/buscar-veiculo.componen
     VeiculoComponent,
     VeiculoListComponent,
     BuscarVeiculoComponent,
+    RotaVeiculoComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,8 +62,12 @@ import { BuscarVeiculoComponent } from './buscar-veiculo/buscar-veiculo.componen
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
+    MatPaginatorModule,
+
   ],
-  providers: [],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

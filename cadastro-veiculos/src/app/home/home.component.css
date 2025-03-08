@@ -1,8 +1,8 @@
 
 
 .mat-grid-tile {
-  background-color: lightblue;
-  color: green;
+  background-color: lightcyan;
+
   cursor: pointer;
 }
 
@@ -25,6 +25,20 @@
   text-align: center; /* Garantir centralização do texto */
 }
 .texto:hover {
+  font-size: 36px;
+}
+
+.texto-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #081F5C;
+  font-size: 24px;
+  transition: font-size 0.5s;
+  text-align: center; /* Garantir centralização do texto */
+}
+.texto-2:hover {
   font-size: 36px;
 }
 

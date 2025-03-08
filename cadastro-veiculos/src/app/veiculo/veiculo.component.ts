@@ -28,9 +28,6 @@ export class VeiculoComponent implements OnInit {
   ngOnInit(): void {
     this.veiculo = this.activatedRoute.snapshot.data['veiculo'];
 
-    
-
-
     }
 
 

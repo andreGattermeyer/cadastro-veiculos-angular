@@ -8,7 +8,7 @@
 
 span {
   color: #FFF;
-
+  padding-left: 150px;
 }
 
 a{
@@ -24,12 +24,11 @@ a{
   justify-content: space-between;
 }
 
-.spacer {
-  flex: 1;
-}
+
 
 .home-button {
   color: white;
+  padding-right: 160px;
 }
 
 .home-button mat-icon {

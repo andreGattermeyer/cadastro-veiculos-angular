@@ -4,7 +4,7 @@
 
   <div align="left" class="m-2">
     <button  mat-raised-button color="accent" routerLink="/veiculo">
-      Voltar ao Cadastro
+      Cadastrar Veículo
     </button>
   </div>
 
@@ -105,5 +105,10 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
   </table>
+  <div class="mt-4">
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+
 </div>

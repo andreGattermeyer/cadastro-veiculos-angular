@@ -1,0 +1,19 @@
+.container {
+  max-width: 1200px;
+}
+
+.rota-lista {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+ol.collapsed {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.expand-icon {
+  cursor: pointer;
+  color: blue;
+  text-decoration: none;
+}
