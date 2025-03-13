@@ -1,0 +1,62 @@
+.container {
+  padding: 20px;
+}
+
+.card {
+  background-color: #f6f4f2;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+mat-radio-button {
+  margin: 5px;
+}
+
+.example-section {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+mat-divider {
+  margin: 20px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+button {
+  min-width: 120px;
+}
+
+
+label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.small-field {
+  max-width: 200px;
+}

@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- CRUD de Rotas de Veículos -->
+    <div class="col-md-6">
+      <h2>Cadastro de Rotas dos Veículos</h2>
+
+      <form (ngSubmit)="adicionarRota()">
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="veiculo-select">
+            <mat-label>Veículo</mat-label>
+            <mat-select [(ngModel)]="novaRota.veiculo" name="veiculo" required
+              (selectionChange)="onVeiculoSelecionado($event.value)">
+              <mat-option *ngFor="let veiculo of veiculos" [value]="veiculo.frota">
+                {{ veiculo.marca }} {{ veiculo.modelo }} - Frota: {{ veiculo.frota }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="veiculo-select">
+            <mat-label>Motorista</mat-label>
+            <input matInput [value]="condutorSelecionado" readonly>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <label for="rota">Rota</label>
+          <input type="text" id="rota" class="form-control" [(ngModel)]="novaRota.rota" name="rota" required />
+        </div>
+
+        <div class="form-group">
+          <label for="paradas">Paradas (um endereço por linha)</label>
+          <textarea id="paradas" class="form-control" [(ngModel)]="novaRota.paradas" name="paradas" rows="5" required
+            (keydown.enter)="preventSubmit($event)"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="data">Data</label>
+          <input type="date" id="data" class="form-control" [(ngModel)]="novaRota.data" name="data" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Adicionar Rota</button>
+      </form>
+    </div>
+
+    <!-- Lista de Rotas -->
+    <div class="col-md-6">
+      <h3>Lista de Rotas</h3>
+      <ul class="list-group rota-lista">
+        <li *ngFor="let rota of rotas" class="list-group-item">
+          <strong>Veículo:</strong> {{ rota.veiculo }} <br />
+          <strong>Rota:</strong> {{ rota.rota }} <br />
+          <strong>Paradas:</strong>
+          <ol [class.collapsed]="rota.paradas.split('\n').length > 5 && !rota.expandido">
+            <li *ngFor="let parada of rota.paradas.split('\n'); let i = index">
+              <a (click)="$event.preventDefault(); abrirMapa(parada)" style="cursor: pointer;">
+                <strong>{{ parada }}</strong>
+              </a>
+            </li>
+          </ol>
+          <span *ngIf="rota.paradas.split('\n').length > 5" (click)="rota.expandido = !rota.expandido"
+            class="expand-icon btn btn-link">
+            <i class="material-icons">{{ rota.expandido ? 'expand_less' : 'expand_more' }}</i> Mostrar {{ rota.expandido
+            ? 'menos' : 'mais' }}
+          </span>
+          <br />
+          <strong>Data:</strong> {{ rota.data | date:'dd/MM/yyyy' }} <br />
+          <button (click)="removerRota(rota)" class="btn btn-danger btn-sm mt-2">Remover</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

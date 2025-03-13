@@ -1,0 +1,42 @@
+.mat-toolbar {
+
+  background-color: blue;
+  height: 80px;
+  font-size: 30px;
+}
+
+
+span {
+  color: #FFF;
+  padding-left: 150px;
+}
+
+a{
+  color: #FFF;
+  padding-left: 1000px;
+  text-decoration: none;
+
+}
+
+.custom-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.home-button {
+  color: white;
+  padding-right: 100px;
+}
+
+.home-button mat-icon {
+  font-size: 24px;
+}
+
+
+
+
+
+

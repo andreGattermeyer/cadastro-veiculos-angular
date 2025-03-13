@@ -1,0 +1,44 @@
+
+
+.mat-grid-tile {
+  background-color: lightcyan;
+
+  cursor: pointer;
+}
+
+.large-font {
+  font-size: 20px; 
+}
+
+.imagem {
+  width: 100%;
+  height: auto;
+}
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  transition: font-size 0.5s;
+  text-align: center; 
+}
+.texto:hover {
+  font-size: 36px;
+}
+
+.texto-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #081F5C;
+  font-size: 24px;
+  transition: font-size 0.5s;
+  text-align: center; 
+}
+.texto-2:hover {
+  font-size: 36px;
+}
+

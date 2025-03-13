@@ -1,0 +1,144 @@
+<div class="container">
+  <div align="right">
+    <button mat-raised-button color="accent" routerLink="/veiculo-list">
+      Ir para a Lista de veículos
+    </button>
+  </div>
+  <div class="card p-5 mt-2">
+    <form #veiculoForm="ngForm" (ngSubmit)="salvarVeiculo(veiculoForm)">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>ID do Veículo</mat-label>
+            <input matInput placeholder="ID do Veículo" name="idVeiculo" [(ngModel)]="veiculo.idVeiculo" disabled />
+            <mat-icon matSuffix>fingerprint</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="small-field">
+            <mat-label>Data</mat-label>
+            <input matInput type="date" placeholder="Data atual" name="dataRegistro"
+              [(ngModel)]="veiculo.dataRegistro" />
+            <mat-icon matSuffix>calendar_today</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Marca do Veículo</mat-label>
+            <input matInput placeholder="Marca do Veículo" name="marca" [(ngModel)]="veiculo.marca" />
+            <mat-icon matSuffix>emoji_transportation</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Modelo do Veículo</mat-label>
+            <input matInput placeholder="Modelo do Veículo" name="modelo" [(ngModel)]="veiculo.modelo" />
+            <mat-icon matSuffix>directions_car</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Chassis do Veículo</mat-label>
+            <input matInput placeholder="Chassis do Veículo" name="chassi" [(ngModel)]="veiculo.chassi" />
+            <mat-icon matSuffix>build_circle</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Placa do Veículo</mat-label>
+            <input matInput placeholder="Placa do Veículo" name="placa" [(ngModel)]="veiculo.placa" />
+            <mat-icon matSuffix>tag</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Quilometragem do Veículo</mat-label>
+            <input matInput placeholder="Quilometragem do Veículo" name="quilometragem"
+              [(ngModel)]="veiculo.quilometragem" />
+            <mat-icon matSuffix>speed</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Condutor do Veículo</mat-label>
+            <input matInput placeholder="Condutor do Veículo" name="condutor" [(ngModel)]="veiculo.condutor" />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Frota do Veículo</mat-label>
+            <input matInput placeholder="Frota do Veículo" name="frota" [(ngModel)]="veiculo.frota" />
+            <mat-icon matSuffix>local_shipping</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Escolha uma região</mat-label>
+            <mat-select name="regiao" [(ngModel)]="veiculo.regiao">
+              <mat-option value="Araçatuba">Araçatuba (SP)</mat-option>
+              <mat-option value="Campo Grande">Campo Grande (MS)</mat-option>
+              <mat-option value="Cuiabá">Cuiabá (MT)</mat-option>
+              <mat-option value="Limeira">Limeira (SP)</mat-option>
+              <mat-option value="Londrina">Londrina (PR)</mat-option>
+              <mat-option value="Ribeirão Preto Matriz">Ribeirão Preto (SP) Matriz</mat-option>
+              <mat-option value="Ribeirão Preto Filial">Ribeirão Preto (SP) Filial</mat-option>
+              <mat-option value="Uberlândia">Uberlândia (MG)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label>Tipo de Veículo</label>
+          <mat-radio-group aria-label="Tipo de Veículo" [(ngModel)]="veiculo.tipoVeiculo" name="tipoVeiculo">
+            <mat-radio-button [checked]="checkTipo('Hidrovácuo')" (click)="selectTipo('Hidrovácuo')"
+              value="Hidrovácuo">Hidrovácuo</mat-radio-button>
+            <mat-radio-button [checked]="checkTipo('Munck')" (click)="selectTipo('Munck')"
+              value="Munck">Munck</mat-radio-button>
+            <mat-radio-button [checked]="checkTipo('Passeio')" (click)="selectTipo('Passeio')"
+              value="Passeio">Passeio</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div class="col-md-6">
+          <label>Situação do Veículo</label>
+          <section class="example-section">
+            <mat-checkbox (change)="onStatusChanges($event, 'OK')" class="example-margin" [(ngModel)]="veiculo.statusOk"
+              name="statusOk" value="OK" [checked]="checkStatus('OK')">OK</mat-checkbox>
+            <mat-checkbox (change)="onStatusChanges($event, 'NaoOk')" class="example-margin"
+              [(ngModel)]="veiculo.statusNaoOk" name="statusNaoOk" value="Não OK" [checked]="checkStatus('NaoOK')">Não
+              OK</mat-checkbox>
+          </section>
+          <!-- Textarea que aparece quando "Não OK" está selecionado -->
+          <div *ngIf="veiculo.statusNaoOk" class="mt-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Explique por que o veículo não está OK</mat-label>
+              <textarea matInput [(ngModel)]="veiculo.explicacaoNaoOk" name="explicacaoNaoOk" rows="4"
+                placeholder="Descreva os problemas encontrados..."></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="text-center mt-3">
+        <button mat-raised-button color="accent" class="m-2 cor-botao-salvar" >Salvar</button>
+        <button mat-raised-button class="m-2" type="button" (click)="veiculoForm.resetForm()">
+          Limpar Formulário
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
